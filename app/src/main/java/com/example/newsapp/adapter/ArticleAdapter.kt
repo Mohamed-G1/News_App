@@ -29,7 +29,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
 
     // that will take the two items and compare between them in background and calculate
     // the diffrence between them
-    private val differ = AsyncListDiffer(this, differCallBack)
+     val differ = AsyncListDiffer(this, differCallBack)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -44,7 +44,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
         val article = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(article.urlToImage).into(ivArticleImage)
-            tvSource.text = article.source.name
+            tvSource.text = article.source?.name
             tvTitle.text = article.description
             tvDescription.text = article.description
             tvPublishedAt.text = article.publishedAt
